@@ -19,7 +19,7 @@ import com.rabobank.git.constant.MappingConstant;
 import com.rabobank.git.model.PullReqResponse;
 import com.rabobank.git.model.ReposResponse;
 import com.rabobank.git.repository.IGitRepository;
-import com.rabobank.git.util.ErrorMessage;
+import com.rabobank.git.util.CustomMessage;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -53,8 +53,8 @@ public class RepoGitContoller {
 		List<ReposResponse> reposResponses = gitRepository.fetchAllPublicRepos(username);
 		if (reposResponses.isEmpty()) {
 			logger.error("No Repos Found for the given User.  : ", username);
-			ErrorMessage apiCustomMessage = new ErrorMessage(HttpStatus.NOT_FOUND, "No Repos Found for the given User.  : " + username);
-			return new ResponseEntity<ErrorMessage>(apiCustomMessage, HttpStatus.NOT_FOUND);
+			CustomMessage apiCustomMessage = new CustomMessage(HttpStatus.NOT_FOUND, "No Repos Found for the given User.  : " + username);
+			return new ResponseEntity<CustomMessage>(apiCustomMessage, HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<List<ReposResponse>>(reposResponses, HttpStatus.OK);
 	}
@@ -73,8 +73,8 @@ public class RepoGitContoller {
 		List<PullReqResponse> reposResponses = gitRepository.pullRequestDetails(username, reponame);
 		if (reposResponses.isEmpty()) {
 			logger.error("No Pull Requests Found for {} : ", username, reponame);
-			ErrorMessage apiCustomMessage = new ErrorMessage(HttpStatus.NOT_FOUND, "No Pull Requests Found for : " + username + "/" + reponame);
-			return new ResponseEntity<ErrorMessage>(apiCustomMessage, HttpStatus.NOT_FOUND);
+			CustomMessage apiCustomMessage = new CustomMessage(HttpStatus.NOT_FOUND, "No Pull Requests Found for : " + username + "/" + reponame);
+			return new ResponseEntity<CustomMessage>(apiCustomMessage, HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<List<PullReqResponse>>(reposResponses, HttpStatus.OK);
 	}

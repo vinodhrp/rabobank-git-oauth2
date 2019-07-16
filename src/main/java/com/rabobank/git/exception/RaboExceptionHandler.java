@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.rabobank.git.util.ErrorMessage;
+import com.rabobank.git.util.CustomMessage;
 
 import feign.FeignException;
 
@@ -37,8 +37,8 @@ public class RaboExceptionHandler extends ResponseEntityExceptionHandler {
 	@ExceptionHandler(value = { FeignException.class })
 	public ResponseEntity<?> handleFeignExceptions(Exception exception, WebRequest request) {
 		logger.error("Excpetion thrown due to Feign Client....  : ", exception.getMessage());
-		ErrorMessage apiCustomMessage = new ErrorMessage(HttpStatus.BAD_REQUEST, "Excpetion thrown due to Feign Client" + exception.getMessage());
-		return new ResponseEntity<ErrorMessage>(apiCustomMessage, HttpStatus.BAD_REQUEST);
+		CustomMessage apiCustomMessage = new CustomMessage(HttpStatus.BAD_REQUEST, "Excpetion thrown due to Feign Client" + exception.getMessage());
+		return new ResponseEntity<CustomMessage>(apiCustomMessage, HttpStatus.BAD_REQUEST);
 	}
 
 	/**
@@ -51,8 +51,8 @@ public class RaboExceptionHandler extends ResponseEntityExceptionHandler {
 	@ExceptionHandler(value = { Exception.class })
 	public ResponseEntity<?> handleAllExceptions(Exception exception, WebRequest request) {
 		logger.error("Something went Wrong : ", exception.getMessage());
-		ErrorMessage apiCustomMessage = new ErrorMessage(HttpStatus.BAD_REQUEST, "Something went Wrong :" + exception.getMessage());
-		return new ResponseEntity<ErrorMessage>(apiCustomMessage, HttpStatus.BAD_REQUEST);
+		CustomMessage apiCustomMessage = new CustomMessage(HttpStatus.BAD_REQUEST, "Something went Wrong :" + exception.getMessage());
+		return new ResponseEntity<CustomMessage>(apiCustomMessage, HttpStatus.BAD_REQUEST);
 	}
 
 }
