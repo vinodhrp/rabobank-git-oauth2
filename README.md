@@ -33,7 +33,7 @@ $ mvn spring-boot:run
 ### API documentation
 PCF -[https://rabobank-git-oauth2-io.cfapps.io/repos/vinodhrp](https://rabobank-git-oauth2-io.cfapps.io/repos/vinodhrp)
 * Testing can be done only via Postman App.
-* Testing Steps are available in root of Project (OAuth2-Postman.docx) 
+* Testing Steps are available in root of Project [OAuth2-Postman.docx](https://github.com/vinodhrp/rabobank-git-oauth2/blob/master/OAuth2-Postman.docx) 
 
 
 
