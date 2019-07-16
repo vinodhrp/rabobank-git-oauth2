@@ -38,7 +38,7 @@ public class RepoGitContoller {
 	public Logger logger = LoggerFactory.getLogger(RepoGitContoller.class);
 
 	@Autowired
-	private IGitRepository gitService;
+	private IGitRepository gitRepository;
 
 	/**
 	 * Get Method to fetch all the Public Repository available for the given Git User.
@@ -50,7 +50,7 @@ public class RepoGitContoller {
 	@GetMapping(value = "/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> listAllRepos(@PathVariable("username") String username) {
 		logger.info("Given UserName  : {} ", username);
-		List<ReposResponse> reposResponses = gitService.fetchAllPublicRepos(username);
+		List<ReposResponse> reposResponses = gitRepository.fetchAllPublicRepos(username);
 		if (reposResponses.isEmpty()) {
 			logger.error("No Repos Found for the given User.  : ", username);
 			ErrorMessage apiCustomMessage = new ErrorMessage(HttpStatus.NOT_FOUND, "No Repos Found for the given User.  : " + username);
@@ -70,7 +70,7 @@ public class RepoGitContoller {
 	@RequestMapping(value = "/pulls/{username}/{reponame}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> pullRequestForRepo(@PathVariable("username") String username, @PathVariable("reponame") String reponame) {
 		logger.info("Given UserName/RepoName {} : ", username, reponame);
-		List<PullReqResponse> reposResponses = gitService.pullRequestDetails(username, reponame);
+		List<PullReqResponse> reposResponses = gitRepository.pullRequestDetails(username, reponame);
 		if (reposResponses.isEmpty()) {
 			logger.error("No Pull Requests Found for {} : ", username, reponame);
 			ErrorMessage apiCustomMessage = new ErrorMessage(HttpStatus.NOT_FOUND, "No Pull Requests Found for : " + username + "/" + reponame);

@@ -14,6 +14,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import com.rabobank.git.service.RaboBankUserService;
 
 /**
+ * OAuth Server validate and provide bearer token to access the resources
  * 
  * @author vinodhr
  *
@@ -45,6 +46,9 @@ public class OAuthServer extends AuthorizationServerConfigurerAdapter {
 	
 	@Value("${spring.rabobank.authorities}")
 	private String authority;
+	
+	@Value("${spring.rabobank.timeout}")
+	private Integer tokenTimeOut;
 
 	@Override
 	public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
@@ -59,7 +63,7 @@ public class OAuthServer extends AuthorizationServerConfigurerAdapter {
 				.authorizedGrantTypes(grantTypes)
 				.scopes(scopes)
 				.authorities(authority)
-				.accessTokenValiditySeconds(1000)
+				.accessTokenValiditySeconds(tokenTimeOut)
 				.autoApprove(true);
 	}
 

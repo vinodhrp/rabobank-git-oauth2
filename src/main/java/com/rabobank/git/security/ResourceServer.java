@@ -6,6 +6,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 
 /**
+ * Resource Server configure what all the resources has to be authorized 
  * 
  * @author vinodhr
  *

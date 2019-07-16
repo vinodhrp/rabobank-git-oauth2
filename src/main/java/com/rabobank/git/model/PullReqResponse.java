@@ -11,8 +11,8 @@ import lombok.Setter;
 
 /**
  * 
- * Takes responsibility of converting Json properties of Git to custom pojo properties. For getting
- * given Repo information from Git
+ * Takes responsibility of converting Json properties of Git to custom pojo
+ * properties. For getting given Repo information from Git
  * 
  * @author vinodhr
  *
@@ -46,25 +46,5 @@ public class PullReqResponse {
 	@ApiModelProperty(notes = APIConstant.DOC_URL)
 	@JsonProperty("documentation_url")
 	private String documentationUrl;
-
-	@JsonProperty("message")
-	public String getMessage() {
-		return message;
-	}
-
-	@JsonProperty("message")
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	@JsonProperty("documentation_url")
-	public String getDocumentationUrl() {
-		return documentationUrl;
-	}
-
-	@JsonProperty("documentation_url")
-	public void setDocumentationUrl(String documentationUrl) {
-		this.documentationUrl = documentationUrl;
-	}
 
 }

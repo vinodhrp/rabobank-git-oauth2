@@ -2,7 +2,7 @@ package com.rabobank.git.constant;
 
 /**
  * 
- * Constants used for API documentation
+ * Constants used for Swagger API documentation
  * 
  * @author vinodhr
  *

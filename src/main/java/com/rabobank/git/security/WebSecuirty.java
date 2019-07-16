@@ -19,6 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import com.rabobank.git.service.RaboBankUserService;
 
 /**
+ * Authentication of the user 
  * 
  * @author vinodhr
  *
