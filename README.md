@@ -1,4 +1,4 @@
-# Rabo Bank - Git API Invoker - Secured with OAuth2
+# Rabobank - Git API Invoker - Secured with OAuth2
 
 
 ## About the Application
