@@ -21,9 +21,8 @@ import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-
-
 /**
+ * Unit Test of APIs
  * 
  * @author vinodhrp
  *
@@ -33,41 +32,37 @@ import org.springframework.web.context.WebApplicationContext;
 @WebAppConfiguration
 public class RepoGitContollerTest {
 	public Logger logger = LoggerFactory.getLogger(RepoGitContollerTest.class);
-	
+
 	@Autowired
-    private WebApplicationContext webApplicationContext;
+	private WebApplicationContext webApplicationContext;
 	private MockMvc mockMvc;
-	
+
 	@Before
 	public void setup() {
 		DefaultMockMvcBuilder builder = MockMvcBuilders.webAppContextSetup(this.webApplicationContext);
 		this.mockMvc = builder.build();
 	}
-	
-	
-	
+
 	@Test
-    public void getRepos() throws Exception {
-		MvcResult result = mockMvc
-				.perform(get("/repos/vinodhrp").content(MediaType.APPLICATION_JSON_VALUE))
+	public void getRepos() throws Exception {
+		MvcResult result = mockMvc.perform(get("/repos/vinodhrp").content(MediaType.APPLICATION_JSON_VALUE))
 				.andExpect(status().isOk()).andReturn();
 		String resultContent = result.getResponse().getContentAsString();
 		logger.info(resultContent);
 		int status = result.getResponse().getStatus();
 		Assert.assertTrue(status == HttpStatus.SC_OK);
-        
-    }
-	
+
+	}
+
 	@Test
-    public void getRepoDetail() throws Exception {
-		MvcResult result = mockMvc
-				.perform(get("/repos/pulls/spring/spring").content(MediaType.APPLICATION_JSON_VALUE))
+	public void getRepoDetail() throws Exception {
+		MvcResult result = mockMvc.perform(get("/repos/pulls/spring/spring").content(MediaType.APPLICATION_JSON_VALUE))
 				.andExpect(status().isOk()).andReturn();
 		String resultContent = result.getResponse().getContentAsString();
 		logger.info(resultContent);
 		int status = result.getResponse().getStatus();
 		Assert.assertTrue(status == HttpStatus.SC_OK);
-        
-    }
+
+	}
 
 }
