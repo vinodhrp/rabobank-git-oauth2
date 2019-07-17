@@ -13,8 +13,8 @@
 
 ### Pull from git 
 ```
-$ git clone https://github.com/vinodhrp/rabobank-github-oauth2
-$ cd rabobank-github-oauth2
+$ git clone https://github.com/vinodhrp/rabobank-git-oauth2
+$ cd rabobank-git-oauth2
 ```
 
 ### Build & run 
